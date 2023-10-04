@@ -4,6 +4,30 @@ from ortools.sat.python import cp_model
 import array as arr
 import numpy as np
 import time
+import json
+
+class VarArraySolutionPrinter(cp_model.CpSolverSolutionCallback):
+    """Print intermediate solutions."""
+
+    def __init__(self, variables):
+        cp_model.CpSolverSolutionCallback.__init__(self)
+        self.__variables = variables
+        self.__solution_count = 0
+        self.__solutions = []  # Liste zum Speichern der Lösungen
+
+    def on_solution_callback(self):
+        solution = []
+        self.__solution_count += 1
+        for v in self.__variables:
+            solution.append((v, self.Value(v)))
+        self.__solutions.append(solution)
+
+    def solution_count(self):
+        return self.__solution_count
+
+    def get_solutions(self):
+        return self.__solutions
+
 
 def main():
     #Start timing
@@ -17,7 +41,7 @@ def main():
     number_qualifications: int = 3
     number_days: int = 5
 
-    number_shifts_per_day: int = 2
+    number_shifts_per_day: int = 1
     number_total_shifts = number_days * number_shifts_per_day
 
     # 0.2) Define individual working hours per employee
@@ -25,39 +49,39 @@ def main():
     # !!ATTENTION: MAX SHIFTS PER EMPLOYEE NEEDS TO BE ADJUSTED TO DAYS AND NUMBER SHIFTS PER DAY
     # !!ATTENTION: array lengths needs to be adjusted to number of employees
     #otherwise max shifts might not be sufficient to cover the required total number of shifts
-    max_shifts_per_employee = arr.array('i', [10, 10, 10, 10, 10])
-    min_shifts_per_employee = arr.array('i', [5, 5, 5, 3, 3])
+    max_shifts_per_employee = arr.array('i', [5, 5, 5, 5, 5])
+    min_shifts_per_employee = arr.array('i', [2, 1, 2, 1, 1])
 
     # 0.3) Definition of Availability Matrix: Availability of each employee for each shift (number total shifts)
     # each line = one employee, each column = one shift of the total number of shifts (days * shifts per day)
     # 1 represents an available employee, 0 represents an absent employee who thus can not be assigned to a job
     # !!ATTENTION: Matrix NEEDS TO BE ADJUSTED TO DAYS AND NUMBER OF SHIFTS PER DAY (=number of columns)
     # !!ATTENTION: Matrix needs to be adjusted to number of employees (=number of lines)
-    employee_availability_matrix = np.array([[0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                             [1, 1, 1, 0, 1, 1, 0, 1, 1, 0],
-                                             [1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-                                             [0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                                             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    employee_availability_matrix = np.array([[0,1,1,1,1],
+                                             [1,1,0,1,0],
+                                             [1,1,1,1,0],
+                                             [0,0,0,0,1],
+                                             [1,1,1,1,1]
                                              ])
-
-    # 0.4) Definition of employee qualification matrix:
+    
+        # 0.4) Definition of employee qualification matrix:
     # each line = one employee, each column = one qualification assessed on a scale from 1 to 3
     # 1 represents high skill, 3 represents low skill
     # !!ATTENTION: Matrix needs to be adjusted to number of employees (=number of lines)
     # !!ATTENTION: Matrix also needs to be adjusted to number of qualifications (=number of columns)
-    employee_qualification_matrix = np.array([[1, 1, 2],
-                                              [2, 1, 1],
-                                              [3, 1, 2],
-                                              [2, 3, 3],
-                                              [2, 1, 2]
+    employee_qualification_matrix = np.array([[1, 1, 1],
+                                              [1, 1, 1],
+                                              [1, 1, 1],
+                                              [1, 1, 1],
+                                              [1, 1, 1]
                                               ])
     # 0.5) Definition of Job Requirements Matrix
     # each line = one job, each column = one qualification assessed on a scale from 1 to 3
     # !!ATTENTION: Matrix needs to be adjusted to number of jobs (=number of lines)
     # and number of qualifications (=number of columns)
-    job_required_qualification_matrix = np.array([[3, 3, 3],
-                                                  [2, 1, 2],
-                                                  [3, 2, 2]
+    job_required_qualification_matrix = np.array([[1, 1, 1],
+                                                  [1, 1, 1],
+                                                  [1, 1, 1]
                                                   ])
 
     # 0.6) Definition of Employee-Job Matrix
@@ -77,14 +101,6 @@ def main():
                                                [65, 50, 15],
                                                [50, 50, 60]
                                                ])
-
-    # 0.8) Definition of Employee-Job Preference Matrix
-    #each employee has an individual "preference" (independent of the job_preference_matrix!) for rotation
-    #here: definition of rotation is how maximum often an employee wants to do a certain job in the schedule
-    #thus: the lower the score, the higher the preference for rotation
-    #but: if the score is set too low, there might be no solution anymore e.g. 1 would mean an employee
-    #wants to do a job maximum one time -->will be difficult to find a solution
-    rotation_preference_per_employee = arr.array('i', [3, 3, 3, 3, 10])
 
     # each variable is assigned a range
     employees = range(number_employees)
@@ -175,11 +191,30 @@ def main():
     # 5.2.2) step 2: use employee_job_calculation_matrix to define constraint on solution
     # each time 0 occurs in the employee_job_calculation_matrix, the employee is not able to work on the respective job
     # attention starts counting for e and j at 0 and not at 1
+
+    # Define a dictionary to map employee IDs to names
+    employee_names = {
+        0: "John",
+        1: "Alice",
+        2: "Bob",
+        3: "Emily",
+        4: "Franck"
+    }
+
+    shift_names = {
+        0: "Monday",
+        1: "Tuesday",
+        2: "Wednesday",
+        3: "Thursday",
+        4: "Friday"
+    }
+
     print('The employee-job restrictions are:')
     for e in employees:
         for j in jobs:
             if employee_job_calculation_matrix[e, j] == 0:
-                print('employee', e, 'can not work on job', j)
+                print('Employee', employee_names[e], 'can not work on job', j)
+                print("None")
                 for s in schedule:
                     model.Add(shifts[(e, s, j)] == 0)
     print()
@@ -189,40 +224,102 @@ def main():
         for s in schedule:
             for j in jobs:
                 model.Add(shifts[(e, s, j)] <= employee_availability_matrix[e, s])
+                if(employee_availability_matrix[e, s]==1 and j == 0):
+                    print("Employee " + str(employee_names[e]) + " is available for shift: " + str(shift_names[s]))
 
-    # 5.4) Specific constraint4: each employee is scheduled maximum a certain times for one task = rotation constraint
-    #the sum of scheduled shifts per job per employee has to be smaller equal to the rotation preference per employee
-    #thus smaller equal to the maximum of numbers of shifts per job per employee
-    for e in employees:
-        for j in jobs:
-            model.Add(sum(shifts[(e, s, j)] for s in schedule) <= rotation_preference_per_employee[e])
+    print()
+                
 
     # 6.) Problem solver
     # Cp.Solver(): searches for solutions
+ 
     solver = cp_model.CpSolver()
-    solver.Solve(model)
+    solution_printer = VarArraySolutionPrinter(list(shifts.values()))
+    # Enumerate all solutions.
+    solver.parameters.enumerate_all_solutions = True
+    # Solve.
+    status = solver.Solve(model, solution_printer)
+
+    print("Number of solutions found: %i " % solution_printer.solution_count())
+
+
+    # Lösungen abrufen und ausgeben
+    number_shifts_per_employee = [0 for i in range(number_employees)]
+    solutions = solution_printer.get_solutions()
+    solCounter = 0
+    for solution in solutions:
+        print("Lösung " + str(solCounter) + " :")
+
+
+        #print("solution content")
+        #print(solution)
+
+        solCounter += 1
+        # Drucken Sie die Überwachung des Gesamtplans
+        counter_day = 0
+        total_preference = 0
+        for s in schedule:
+            print('Day', counter_day, 'Shift', s + 1)
+            counter_day = divisible(s + 1, number_shifts_per_day, counter_day)
+            for e in employees:
+                """ for j in jobs:
+                    # if solver.Value(shifts[(e, s, j)]) == 1:
+                    #     print('Employee', employee_names[e], 'works on job', j)
+                    #     number_shifts_per_employee[e] = number_shifts_per_employee[e] + 1
+                    #     total_preference += employee_job_preference_matrix[e, j]
+                    if any(v.Name() == f"shift_{e}_{s}_{j}" and value == 1 for v, value in solution):
+                        print('Employee', employee_names[e], 'works on job', j)
+                        number_shifts_per_employee[e] = number_shifts_per_employee[e] + 1
+                        total_preference += employee_job_preference_matrix[e, j]  # Stelle sicher, dass dies richtig ist """
+
+                """ for j in jobs:
+                    # Überprüfen Sie, ob die Variable in dieser Lösung auf 1 gesetzt ist
+                    var_name = f"shift_{e}_{s}_{j}"
+                    var_value = next((value for v, value in solution if v.Name() == var_name), 0)
+                    if var_value == 1:
+                        print('Employee', employee_names[e], 'works on job', j)
+                        number_shifts_per_employee[e] += 1
+                        total_preference += employee_job_preference_matrix[e, j] """
+
+                for j in jobs:
+                    # Überprüfen Sie, ob die entsprechende Variable in dieser Lösung auf 1 gesetzt ist
+                    var_name = f"shift_n{e}d{s}s{j}"
+                    var_value = next((value for v, value in solution if v.Name() == var_name), 0)
+                    if var_value == 1:
+                        print('Employee', employee_names[e], 'works on job', j)
+                        number_shifts_per_employee[e] += 1
+                        total_preference += employee_job_preference_matrix[e, j]
+            print()
+
+        
+        print("Total Preference for Solution " + str(solCounter-1) + ":", total_preference)
+        print("_____________________________________________________________")
+        print()
+
+
+
 
     # 7.) Show solution:
     # create array which saves number of shifts per employee and is increased by 1 each time decision value  = 1
     number_shifts_per_employee = [0 for i in range(number_employees)]
     counter_day: int = 1
 
-    # print solution: overall schedule
+    """ # print solution: overall schedule
     for s in schedule:
         print('Day', counter_day, 'Shift', s + 1)
-        counter_day = divsible(s + 1, number_shifts_per_day, counter_day)
+        counter_day = divisible(s + 1, number_shifts_per_day, counter_day)
         for e in employees:
             for j in jobs:
                 if solver.Value(shifts[(e, s, j)]) == 1:
-                    print('Employee', e, 'works on job', j)
+                    print('Employee', employee_names[e], 'works on job', j)
                     number_shifts_per_employee[e] = number_shifts_per_employee[e] + 1
-        print()
+        print() """
 
     # print number of shifts per employee
     print()
     print('Overview total number of shifts per employee:')
     for e in employees:
-        print('Employee', e, 'works on', number_shifts_per_employee[e], 'shifts in total')
+        print('Employee', employee_names[e], 'works on', number_shifts_per_employee[e], 'shifts in total')
 
     # print total preference score of all employees (=the objective, which should be minimized)
     total_score: int = 0
@@ -243,18 +340,20 @@ def main():
     print()
     print('Total individual preference score per employee:')
     for e in employees:
-        print('Employee ', e, 'has a preference score of: ', individual_score[e])
+        print('Employee ', employee_names[e], 'has a preference score of: ', individual_score[e])
 
     # print total average preference score per employee:
-    total_average_preference_score = total_score / number_employees
-    print('Total average preference score per employee:' , total_average_preference_score)
+    if(number_employees != 0):
+        total_average_preference_score = total_score / number_employees
+        print('Total average preference score per employee:' , total_average_preference_score)
 
     #print individual average preference score per employee
     #round function rounds to x decimal places
     print()
-    print('Individual average preference score per employee:')
-    for e in employees:
-        print('Employee ', e, 'has an average preference score of: ', round(individual_score[e] / number_shifts_per_employee[e],2))
+    if(number_shifts_per_employee[e] != 0):
+        print('Individual average preference score per employee:')
+        for e in employees:
+            print('Employee ', employee_names[e], 'has an average preference score of: ', round(individual_score[e] / number_shifts_per_employee[e],2))
 
     #print maximum (possible) preference score per employee
     #array maxInRows saves the maximum (possible) preference score for each employee
@@ -264,7 +363,7 @@ def main():
 
     print('Maximum preference score per employee:')
     for e in employees:
-        print('Employee ', e, 'has a maximum possible preference score of: ', maxInRows[e])
+        print('Employee ', employee_names[e], 'has a maximum possible preference score of: ', maxInRows[e])
 
     # Code to determine if an optimal solutions could be found
     status = solver.Solve(model)
@@ -287,13 +386,13 @@ def main():
     #counter_day resets counter day to 1 at the beginning and for each employee
     # (counter day to transform shifts into days)
     for e in employees:
-        print('Employee', e, 'has the following schedule:')
+        print('Employee', employee_names[e], 'has the following schedule:')
         counter_day = 1
         for s in schedule:
             for j in jobs:
                 if solver.Value(shifts[(e, s, j)]) == 1:
                     print('day', counter_day,'in shift', s+1, 'on job',j )
-            counter_day = divsible(s + 1, number_shifts_per_day, counter_day)
+            counter_day = divisible(s + 1, number_shifts_per_day, counter_day)
 
         print()
 
@@ -303,7 +402,57 @@ def main():
     time_end = time.time()
     print(f"Runtime of the program is {time_end - time_start} seconds")
 
-def divsible(currentschedule, numbershifts, counter_day):
+    #TODO: Stimmt das so?
+    schedule_data =  solve_shifts_withInput(shifts, solver, schedule, employees, jobs, number_shifts_per_day, number_shifts_per_employee)
+    # Verwenden Sie json.dumps, um das Dictionary in einen JSON-ähnlichen String umzuwandeln
+    schedule_data_json = json.dumps(schedule_data, indent=4)  # Hier wird die Einrückung für eine bessere Lesbarkeit verwendet
+
+    # Geben Sie den JSON-ähnlichen String aus
+    #print("Datenstruktur:\n" + schedule_data_json)
+
+#TODO: Diese Funktion kann im Flask-Backend importiert werden und enthält dann die Schichtplanungsdaten in einem Dictionary-Format, dieses kann als JSON-Format ans Frontend gesendet werden zur ANzeige
+def solve_shifts_withInput(shifts_solution, solver, schedule, employees, jobs, number_shifts_per_day, number_shifts_per_employee):
+    schedule_data = {}
+
+    # Wochentage für die Ausgabe definieren
+    weekdays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"]
+
+    
+    counter_day = 1
+    # Schleife über die Tage (Montag, Dienstag, ...)
+    for s in schedule:
+        
+        #Zuweisung von Tag und Schicht in schedule_data
+        current_weekday = weekdays[counter_day-1]
+        counter_day = divisible(s + 1, number_shifts_per_day, counter_day)
+
+        # Hier wird ein separates day_data Dictionary für jede Schicht initialisiert
+        if current_weekday not in schedule_data:
+            day_data = {
+                "Frühschicht": [],  # Liste für die Frühschicht
+                "Spätschicht": []   # Liste für die Spätschicht
+            }
+
+        for e in employees:
+            for j in jobs:
+                if solver.Value(shifts_solution[(e, s, j)]) == 1:
+
+                    #Zuweisung von Mitarbeiter in day_data
+                    if s % 2 == 0: 
+                        day_data["Frühschicht"].append({"employee": e, "job": j})
+
+                    else:
+                        day_data["Spätschicht"].append({"employee": e, "job": j})
+
+                    number_shifts_per_employee[e] = number_shifts_per_employee[e] + 1
+
+        # Die Tagesdaten zur schedule_data hinzufügen
+        schedule_data[current_weekday] = day_data
+
+    return schedule_data
+
+
+def divisible(currentschedule, numbershifts, counter_day):
     if currentschedule % numbershifts == 0:
         counter_day = counter_day + 1
     return counter_day

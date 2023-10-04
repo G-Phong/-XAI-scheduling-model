@@ -1,0 +1,89 @@
+/* EduGame.css */
+
+.employee-kiosk {
+  background-color: gray;
+  border: 2px solid #ccc;
+  padding: 8px;
+  margin: 4px;
+  background-color: #fff;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+.employee-kiosk:active {
+  background-color: gray;
+  transform: scale(1.1);
+}
+
+
+.subcell {
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin: 4px;
+  background-color: #fff;
+  transition: transform 0.2s;
+}
+
+.subcell:hover {
+  transform: scale(1.05);
+}
+
+.employee-kiosk {
+  background-color: #3498db; /* You can change this color to your preference */
+  border: 2px solid #ccc;
+  padding: 8px;
+  margin: 4px;
+  color: #fff; /* Text color */
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+.employee-kiosk:active {
+  background-color: #2980b9; /* Color when clicked */
+  transform: scale(1.1);
+}
+
+
+.employee-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center; /* Center-align items horizontally */
+  align-items: center; /* Center-align items vertically */
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+td {
+  min-width: 100px;
+}
+
+td:hover {
+  background-color: #e0e0e0;
+}
+
+.alert {
+  display: inline-block;
+  max-width: 300px;
+}

@@ -1,0 +1,75 @@
+/* Navbar.css */
+
+/* Stil für die Navbar */
+.navbar {
+  background-color: #ed0808;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 150px; /* Feste Breite */
+  display: block;
+  flex-direction: column;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Stil für den Brand-Text */
+.navbar-brand {
+  font-size: 1.5rem;
+  text-align: left;
+  margin-left: 10px;
+}
+
+/* Stil für die Liste der Links */
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  flex-grow: 1; /* Füllt den verfügbaren vertikalen Raum aus */
+  overflow-y: auto; /* Scrollleiste bei Überlauf hinzufügen */
+}
+
+/* Stil für die Listenelemente in der Navbar */
+.nav-item {
+  margin-bottom: 0.5rem;
+}
+
+/* Stil für die Link-Texte */
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+/* Aktives Listenelement in der Navbar */
+.nav-item.active {
+  background-color: #555;
+}
+
+/* Hover-Effekt für Listenelemente */
+.nav-item:hover {
+  background-color: #777;
+}
+
+/* das ist ein versuch die navbar durchgängig nach unten zu gestalten */
+
+
+ .sidebar {
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.main-content {
+  margin-left: 350px;
+  padding: 1rem;
+}
