@@ -19,3 +19,8 @@ dist/
 
 # Lokale Konfigurationsdateien
 *.local
+
+.deployment
+deploy.sh
+
+.VSCodeCounter
