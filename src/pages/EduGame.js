@@ -355,10 +355,19 @@ export default function EduGame() {
     clearInterval(timerInterval);
   };
 
-  // Updatefunktion für den Timer
+/*   // Updatefunktion für den Timer
   const updateTimer = () => {
     if (isRunning) {
       setTimer((prevTimer) => prevTimer + 1);
+    }
+  }; */
+
+  // Updatefunktion für den Timer
+  const updateTimer = () => {
+    if (isRunning) {
+      setTimeout(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000); // Timer alle 1000 Millisekunden (1 Sekunde) aktualisieren
     }
   };
 
@@ -472,7 +481,7 @@ export default function EduGame() {
     setShiftCounts(calculateShiftCounts());
   }, [weekdays, shiftTypes, scheduleData]);
 
-/*   // Effekt für die Timer-Aktualisierung bei isRunning
+  /*   // Effekt für die Timer-Aktualisierung bei isRunning
   useEffect(() => {
     if (isRunning) {
       updateTimer();
@@ -485,6 +494,11 @@ export default function EduGame() {
       setTimer(0); // Reset the timer to 0
     }
   }, [isRunning]); */
+
+  // Effekt für die Timer-Aktualisierung bei isRunning
+  useEffect(() => {
+    updateTimer();
+  }, [isRunning]); // Timer nur bei Änderungen von isRunning aktualisieren
 
   return (
     <div className="eduGame">
@@ -952,8 +966,6 @@ export default function EduGame() {
               Congratulations! You solved the puzzle. Now compare solutions.
             </h2>
 
-           
-
             <div>
               <table className="table table-dark table-bordered table-striped">
                 <thead>
@@ -1017,34 +1029,32 @@ export default function EduGame() {
       </section>
 
       <GaugeChart
-              id={`999`}
-              animate={true}
-              animDelay={0}
-              animateDuration={0}
-              nrOfLevels={10} // Set the number of levels to 10
-              percent={30}
-              textColor={"white"}
-              arcWidth={0.2}
-              formatTextValue={(value) =>
-                Math.round(value / 10).toString() + " shift(s)"
-              } // Display integers
-            />
+        id={`999`}
+        animate={true}
+        animDelay={0}
+        animateDuration={0}
+        nrOfLevels={10} // Set the number of levels to 10
+        percent={30}
+        textColor={"white"}
+        arcWidth={0.2}
+        formatTextValue={(value) =>
+          Math.round(value / 10).toString() + " shift(s)"
+        } // Display integers
+      />
 
-<GaugeChart
-              id={`998`}
-              animate={false}
-              animDelay={0}
-              animateDuration={0}
-              nrOfLevels={10} // Set the number of levels to 10
-              percent={30}
-              textColor={"black"}
-              arcWidth={0.2}
-              formatTextValue={(value) =>
-                Math.round(value / 10).toString() + " shift(s)"
-              } // Display integers
-            />
-
-
+      <GaugeChart
+        id={`998`}
+        animate={false}
+        animDelay={0}
+        animateDuration={0}
+        nrOfLevels={10} // Set the number of levels to 10
+        percent={30}
+        textColor={"black"}
+        arcWidth={0.2}
+        formatTextValue={(value) =>
+          Math.round(value / 10).toString() + " shift(s)"
+        } // Display integers
+      />
     </div>
   );
 }
