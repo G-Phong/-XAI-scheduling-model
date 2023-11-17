@@ -1017,13 +1017,12 @@ export default function EduGame() {
       </section>
 
       <GaugeChart
-              id={`gauge-chart-${index}`}
+              id={`999`}
               animate={true}
               animDelay={0}
               animateDuration={0}
               nrOfLevels={10} // Set the number of levels to 10
-              percent={percent}
-              colors={colors}
+              percent={30}
               textColor={"white"}
               arcWidth={0.2}
               formatTextValue={(value) =>
@@ -1031,7 +1030,21 @@ export default function EduGame() {
               } // Display integers
             />
 
-            
+<GaugeChart
+              id={`998`}
+              animate={false}
+              animDelay={0}
+              animateDuration={0}
+              nrOfLevels={10} // Set the number of levels to 10
+              percent={30}
+              textColor={"black"}
+              arcWidth={0.2}
+              formatTextValue={(value) =>
+                Math.round(value / 10).toString() + " shift(s)"
+              } // Display integers
+            />
+
+
     </div>
   );
 }
