@@ -522,8 +522,8 @@ export default function EduGame() {
                       <GaugeChart
                         id={`gauge-chart-${index}`}
                         animate={true}
-                        animDelay={200}
-                        animateDuration={1000}
+                        animDelay={0}
+                        animateDuration={0}
                         nrOfLevels={10} // Set the number of levels to 10
                         percent={percent}
                         colors={colors}
@@ -633,7 +633,7 @@ export default function EduGame() {
                                   ? "Available"
                                   : "Not Available";
                               const cellColor =
-                                isAvailable === 1 ? "#C2E9A0" : "#DEC789";
+                                isAvailable === 1 ? "#C2E9A0" : "#CCCCCC"; {/* green and then gray */}
                               return (
                                 <div
                                   key={employeeID}
