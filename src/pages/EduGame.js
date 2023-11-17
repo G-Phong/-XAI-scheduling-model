@@ -633,7 +633,10 @@ export default function EduGame() {
                                   ? "Available"
                                   : "Not Available";
                               const cellColor =
-                                isAvailable === 1 ? "#C2E9A0" : "#CCCCCC"; {/* green and then gray */}
+                                isAvailable === 1 ? "#C2E9A0" : "#CCCCCC";
+                              {
+                                /* green and then gray */
+                              }
                               return (
                                 <div
                                   key={employeeID}
@@ -949,6 +952,8 @@ export default function EduGame() {
               Congratulations! You solved the puzzle. Now compare solutions.
             </h2>
 
+           
+
             <div>
               <table className="table table-dark table-bordered table-striped">
                 <thead>
@@ -995,9 +1000,10 @@ export default function EduGame() {
               <div className="container-ai-statistics">
                 <p class="solution-time">
                   The AI took less than one second to get this solution and is{" "}
-                  {(-100+((currentTotalPreference / totalPreference) * 100)).toFixed(
-                    2
-                  )}
+                  {(
+                    -100 +
+                    (currentTotalPreference / totalPreference) * 100
+                  ).toFixed(2)}
                   % better in terms of preference satisfaction.
                 </p>
 
@@ -1009,6 +1015,23 @@ export default function EduGame() {
           </div>
         )}
       </section>
+
+      <GaugeChart
+              id={`gauge-chart-${index}`}
+              animate={true}
+              animDelay={0}
+              animateDuration={0}
+              nrOfLevels={10} // Set the number of levels to 10
+              percent={percent}
+              colors={colors}
+              textColor={"white"}
+              arcWidth={0.2}
+              formatTextValue={(value) =>
+                Math.round(value / 10).toString() + " shift(s)"
+              } // Display integers
+            />
+
+            
     </div>
   );
 }
