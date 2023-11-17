@@ -483,7 +483,9 @@ export default function EduGame() {
     setShiftCounts(calculateShiftCounts());
   }, [weekdays, shiftTypes, scheduleData]);
 
-  /*   // Effekt für die Timer-Aktualisierung bei isRunning
+
+  //______TIMER CHANGES_____
+    // Effekt für die Timer-Aktualisierung bei isRunning
   useEffect(() => {
     if (isRunning) {
       updateTimer();
@@ -495,12 +497,12 @@ export default function EduGame() {
     if (!isRunning) {
       setTimer(0); // Reset the timer to 0
     }
-  }, [isRunning]); */
+  }, [isRunning]);
 
-  // Effekt für die Timer-Aktualisierung bei isRunning
+/*   // Effekt für die Timer-Aktualisierung bei isRunning
   useEffect(() => {
     updateTimer();
-  }, [isRunning]); // Timer nur bei Änderungen von isRunning aktualisieren
+  }, [isRunning]); // Timer nur bei Änderungen von isRunning aktualisieren */
 
   return (
     <div className="eduGame">
