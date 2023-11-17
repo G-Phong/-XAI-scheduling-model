@@ -61,6 +61,8 @@ export default function EduGame() {
 
   const [isTableVisible, setTableVisible] = useState(false);
 
+  const MemoizedGaugeChart = React.memo(GaugeChart);
+
   const handleDragStart = (event, employee) => {
     event.dataTransfer.setData("employee", JSON.stringify(employee));
   };
@@ -355,21 +357,21 @@ export default function EduGame() {
     clearInterval(timerInterval);
   };
 
-/*   // Updatefunktion für den Timer
+  // Updatefunktion für den Timer
   const updateTimer = () => {
     if (isRunning) {
       setTimer((prevTimer) => prevTimer + 1);
     }
-  }; */
+  };
 
-  // Updatefunktion für den Timer
+  /* // Updatefunktion für den Timer
   const updateTimer = () => {
     if (isRunning) {
       setTimeout(() => {
         setTimer((prevTimer) => prevTimer + 1);
       }, 1000); // Timer alle 1000 Millisekunden (1 Sekunde) aktualisieren
     }
-  };
+  }; */
 
   // Updatefunktion für den Timer
   const resetTimer = () => {
@@ -533,7 +535,7 @@ export default function EduGame() {
                   return (
                     <div key={index}>
                       <h3>{user.name}</h3>
-                      <GaugeChart
+                      <MemoizedGaugeChart
                         id={`gauge-chart-${index}`}
                         animate={true}
                         animDelay={0}
@@ -1028,7 +1030,7 @@ export default function EduGame() {
         )}
       </section>
 
-      <GaugeChart
+      <MemoizedGaugeChart
         id={`999`}
         animate={true}
         animDelay={0}
@@ -1042,7 +1044,7 @@ export default function EduGame() {
         } // Display integers
       />
 
-      <GaugeChart
+      <MemoizedGaugeChart
         id={`998`}
         animate={false}
         animDelay={0}
