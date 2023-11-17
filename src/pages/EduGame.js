@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useStopwatch } from "react-timer-hook";
 import "./EduGame.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -26,6 +27,39 @@ import {
 
 import GaugeChart from "react-gauge-chart";
 
+/* import {MyStopwatch} from "../components/MyStopwatch.js"; */
+
+function MyStopwatch() {
+  const {
+    totalSeconds,
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    reset,
+  } = useStopwatch({ autoStart: true });
+
+  // Format the minutes and seconds with leading zeros
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+  const formattedSeconds = seconds.toString().padStart(2, "0");
+
+  return (
+    <div style={{ textAlign: "center" }}>
+    <p></p>
+    <p>Your Solving time:</p>
+    <div style={{ fontSize: "35px"}}>
+      <span>{formattedMinutes}</span>:<span>{formattedSeconds}</span>
+    </div>
+    <button onClick={start}>Start</button>
+    <button onClick={pause}>Pause</button>
+    <button onClick={reset}>Reset</button>
+  </div>
+  );
+}
+
 export default function EduGame() {
   const [scheduleData, setScheduleData] = useState(staticShiftData);
   const [tableStatus, setTableStatus] = useState("UNSOLVED");
@@ -48,8 +82,8 @@ export default function EduGame() {
   const [constraint5Violated, setConstraint5] = useState(true); //Availabilities of an employee must be respected.
 
   // Zustandsvariablen für den Timer
-  const [timer, setTimer] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  /*   const [timer, setTimer] = useState(0);
+  const [isRunning, setIsRunning] = useState(false); */
 
   const [shiftCounts, setShiftCounts] = useState({
     John: 0,
@@ -60,8 +94,6 @@ export default function EduGame() {
   });
 
   const [isTableVisible, setTableVisible] = useState(false);
-
-  const MemoizedGaugeChart = React.memo(GaugeChart);
 
   const handleDragStart = (event, employee) => {
     event.dataTransfer.setData("employee", JSON.stringify(employee));
@@ -341,9 +373,9 @@ export default function EduGame() {
     return colors;
   };
 
-  let timerInterval;
+  /* let timerInterval; */
 
-  // Startfunktion für den Timer
+  /*   // Startfunktion für den Timer
   const startTimer = () => {
     setIsRunning(true);
     // Start the timer with an interval of 1000 milliseconds (1 second)
@@ -364,15 +396,6 @@ export default function EduGame() {
     }
   };
 
-  /* // Updatefunktion für den Timer
-  const updateTimer = () => {
-    if (isRunning) {
-      setTimeout(() => {
-        setTimer((prevTimer) => prevTimer + 1);
-      }, 1000); // Timer alle 1000 Millisekunden (1 Sekunde) aktualisieren
-    }
-  }; */
-
   // Updatefunktion für den Timer
   const resetTimer = () => {
     setTimer(0);
@@ -388,7 +411,7 @@ export default function EduGame() {
     return `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`;
-  };
+  }; */
 
   const jumpToSolution = () => {
     // Update the tableStatus state to "SOLVED"
@@ -402,7 +425,7 @@ export default function EduGame() {
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
-    startTimer();
+    /* startTimer(); */
   }, []); // The empty array ensures it only runs once on mount
 
   useEffect(() => {
@@ -443,7 +466,7 @@ export default function EduGame() {
   useEffect(() => {
     if (tableStatus === "SOLVED") {
       setIsExpanded(true);
-      stopTimer();
+      /* stopTimer(); */
     }
   }, [tableStatus]);
 
@@ -483,9 +506,7 @@ export default function EduGame() {
     setShiftCounts(calculateShiftCounts());
   }, [weekdays, shiftTypes, scheduleData]);
 
-
-  //______TIMER CHANGES_____
-    // Effekt für die Timer-Aktualisierung bei isRunning
+  /*   // Effekt für die Timer-Aktualisierung bei isRunning
   useEffect(() => {
     if (isRunning) {
       updateTimer();
@@ -497,12 +518,7 @@ export default function EduGame() {
     if (!isRunning) {
       setTimer(0); // Reset the timer to 0
     }
-  }, [isRunning]);
-
-/*   // Effekt für die Timer-Aktualisierung bei isRunning
-  useEffect(() => {
-    updateTimer();
-  }, [isRunning]); // Timer nur bei Änderungen von isRunning aktualisieren */
+  }, [isRunning]); */
 
   return (
     <div className="eduGame">
@@ -537,7 +553,7 @@ export default function EduGame() {
                   return (
                     <div key={index}>
                       <h3>{user.name}</h3>
-                      <MemoizedGaugeChart
+                      <GaugeChart
                         id={`gauge-chart-${index}`}
                         animate={true}
                         animDelay={0}
@@ -870,11 +886,12 @@ export default function EduGame() {
                 </div>
               </div>
 
-              <div className="timer-container">
-                <p className="timer-text">
-                  This timer measures your solving time:
-                </p>
-                <div id="timer" className="timer">
+              {
+                <div className="timer-container">
+                  {/*             <p className="timer-text">
+                    This timer measures your solving time:
+                  </p> */}
+                  {/*  <div id="timer" className="timer">
                   {formatTime(timer / 60)}
                 </div>
                 <button
@@ -882,8 +899,12 @@ export default function EduGame() {
                   onClick={resetTimer}
                 >
                   Reset Timer
-                </button>
-              </div>
+                </button> */}
+                  <div>
+                    <MyStopwatch />
+                  </div>
+                </div>
+              }
             </div>
 
             <div className="col-md-3">
@@ -1031,34 +1052,6 @@ export default function EduGame() {
           </div>
         )}
       </section>
-
-      <MemoizedGaugeChart
-        id={`999`}
-        animate={true}
-        animDelay={0}
-        animateDuration={0}
-        nrOfLevels={10} // Set the number of levels to 10
-        percent={30}
-        textColor={"white"}
-        arcWidth={0.2}
-        formatTextValue={(value) =>
-          Math.round(value / 10).toString() + " shift(s)"
-        } // Display integers
-      />
-
-      <MemoizedGaugeChart
-        id={`998`}
-        animate={false}
-        animDelay={0}
-        animateDuration={0}
-        nrOfLevels={10} // Set the number of levels to 10
-        percent={30}
-        textColor={"black"}
-        arcWidth={0.2}
-        formatTextValue={(value) =>
-          Math.round(value / 10).toString() + " shift(s)"
-        } // Display integers
-      />
     </div>
   );
 }
