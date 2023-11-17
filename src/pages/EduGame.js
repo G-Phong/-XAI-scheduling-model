@@ -388,7 +388,7 @@ export default function EduGame() {
     setTableVisible(!isTableVisible);
   };
 
-  // Scroll to top on mount
+ /*  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
     startTimer();
@@ -484,7 +484,7 @@ export default function EduGame() {
     if (!isRunning) {
       setTimer(0); // Reset the timer to 0
     }
-  }, [isRunning]);
+  }, [isRunning]); */
 
   return (
     <div className="eduGame">
