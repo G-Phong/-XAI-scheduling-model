@@ -633,7 +633,7 @@ export default function EduGame() {
                                   ? "Available"
                                   : "Not Available";
                               const cellColor =
-                                isAvailable === 1 ? "lightgreen" : "darkorange";
+                                isAvailable === 1 ? "#C2E9A0" : "#DEC789";
                               return (
                                 <div
                                   key={employeeID}
