@@ -59,7 +59,7 @@ export default function EduGame() {
     Franck: 0,
   });
 
-  const [isTableVisible, setTableVisible] = useState(true);
+  const [isTableVisible, setTableVisible] = useState(false);
 
   const handleDragStart = (event, employee) => {
     event.dataTransfer.setData("employee", JSON.stringify(employee));
