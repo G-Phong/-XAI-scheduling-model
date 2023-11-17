@@ -388,7 +388,7 @@ export default function EduGame() {
     setTableVisible(!isTableVisible);
   };
 
- /*  // Scroll to top on mount
+  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
     startTimer();
@@ -472,7 +472,7 @@ export default function EduGame() {
     setShiftCounts(calculateShiftCounts());
   }, [weekdays, shiftTypes, scheduleData]);
 
-  // Effekt für die Timer-Aktualisierung bei isRunning
+/*   // Effekt für die Timer-Aktualisierung bei isRunning
   useEffect(() => {
     if (isRunning) {
       updateTimer();
