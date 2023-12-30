@@ -1,4 +1,4 @@
-# Backend for XAI Scheduling Model
+# Backend for XAI Model
 
 This backend serves as part of the XAI Scheduling Model and facilitates the computation of shift schedules considering preferences and availabilities.
 
@@ -27,10 +27,11 @@ Before using this backend, please follow these steps:
     pip install -r requirements.txt
     ```
 
-
 ## Usage
 
 After completing the installation steps, you can run the backend to create or modify shift schedules. Here are the key endpoints and their usage:
 
 - **/schedule:** This endpoint generates the current shift schedule.
 - **/solve_shifts_what_if:** This endpoint allows for the calculation of shift schedules taking into account user preferences and availabilities.
+
+By default, the backend runs on port 5000 (this can be adjusted in the code), which can be reached via `localhost:5000`.

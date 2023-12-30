@@ -133,4 +133,4 @@ def get_home_data():
     return jsonify({})
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=True) #change port here if necessary
