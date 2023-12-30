@@ -1,3 +1,5 @@
+//THIS COMPONENT IS NOT USED
+
 import React, { useState } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
 

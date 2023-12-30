@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useStopwatch } from "react-timer-hook";
 import "./EduGame.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -26,6 +27,39 @@ import {
 
 import GaugeChart from "react-gauge-chart";
 
+/* import {MyStopwatch} from "../components/MyStopwatch.js"; */
+
+function MyStopwatch() {
+  const {
+    totalSeconds,
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    reset,
+  } = useStopwatch({ autoStart: true });
+
+  // Format the minutes and seconds with leading zeros
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+  const formattedSeconds = seconds.toString().padStart(2, "0");
+
+  return (
+    <div style={{ textAlign: "center" }}>
+    <p></p>
+    <p>Your Solving time:</p>
+    <div style={{ fontSize: "35px"}}>
+      <span>{formattedMinutes}</span>:<span>{formattedSeconds}</span>
+    </div>
+    <button onClick={start}>Start</button>
+    <button onClick={pause}>Pause</button>
+    <button onClick={reset}>Reset</button>
+  </div>
+  );
+}
+
 export default function EduGame() {
   const [scheduleData, setScheduleData] = useState(staticShiftData);
   const [tableStatus, setTableStatus] = useState("UNSOLVED");
@@ -48,8 +82,8 @@ export default function EduGame() {
   const [constraint5Violated, setConstraint5] = useState(true); //Availabilities of an employee must be respected.
 
   // Zustandsvariablen für den Timer
-  const [timer, setTimer] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  /*   const [timer, setTimer] = useState(0);
+  const [isRunning, setIsRunning] = useState(false); */
 
   const [shiftCounts, setShiftCounts] = useState({
     John: 0,
@@ -59,7 +93,7 @@ export default function EduGame() {
     Franck: 0,
   });
 
-  const [isTableVisible, setTableVisible] = useState(true);
+  const [isTableVisible, setTableVisible] = useState(false);
 
   const handleDragStart = (event, employee) => {
     event.dataTransfer.setData("employee", JSON.stringify(employee));
@@ -339,9 +373,9 @@ export default function EduGame() {
     return colors;
   };
 
-  let timerInterval;
+  /* let timerInterval; */
 
-  // Startfunktion für den Timer
+  /*   // Startfunktion für den Timer
   const startTimer = () => {
     setIsRunning(true);
     // Start the timer with an interval of 1000 milliseconds (1 second)
@@ -377,7 +411,7 @@ export default function EduGame() {
     return `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`;
-  };
+  }; */
 
   const jumpToSolution = () => {
     // Update the tableStatus state to "SOLVED"
@@ -391,7 +425,7 @@ export default function EduGame() {
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
-    startTimer();
+    /* startTimer(); */
   }, []); // The empty array ensures it only runs once on mount
 
   useEffect(() => {
@@ -432,7 +466,7 @@ export default function EduGame() {
   useEffect(() => {
     if (tableStatus === "SOLVED") {
       setIsExpanded(true);
-      stopTimer();
+      /* stopTimer(); */
     }
   }, [tableStatus]);
 
@@ -472,7 +506,7 @@ export default function EduGame() {
     setShiftCounts(calculateShiftCounts());
   }, [weekdays, shiftTypes, scheduleData]);
 
-  // Effekt für die Timer-Aktualisierung bei isRunning
+  /*   // Effekt für die Timer-Aktualisierung bei isRunning
   useEffect(() => {
     if (isRunning) {
       updateTimer();
@@ -484,7 +518,7 @@ export default function EduGame() {
     if (!isRunning) {
       setTimer(0); // Reset the timer to 0
     }
-  }, [isRunning]);
+  }, [isRunning]); */
 
   return (
     <div className="eduGame">
@@ -522,8 +556,8 @@ export default function EduGame() {
                       <GaugeChart
                         id={`gauge-chart-${index}`}
                         animate={true}
-                        animDelay={200}
-                        animateDuration={1000}
+                        animDelay={0}
+                        animateDuration={0}
                         nrOfLevels={10} // Set the number of levels to 10
                         percent={percent}
                         colors={colors}
@@ -633,7 +667,10 @@ export default function EduGame() {
                                   ? "Available"
                                   : "Not Available";
                               const cellColor =
-                                isAvailable === 1 ? "lightgreen" : "darkorange";
+                                isAvailable === 1 ? "#C2E9A0" : "#CCCCCC";
+                              {
+                                /* green and then gray */
+                              }
                               return (
                                 <div
                                   key={employeeID}
@@ -849,11 +886,12 @@ export default function EduGame() {
                 </div>
               </div>
 
-              <div className="timer-container">
-                <p className="timer-text">
-                  This timer measures your solving time:
-                </p>
-                <div id="timer" className="timer">
+              {
+                <div className="timer-container">
+                  {/*             <p className="timer-text">
+                    This timer measures your solving time:
+                  </p> */}
+                  {/*  <div id="timer" className="timer">
                   {formatTime(timer / 60)}
                 </div>
                 <button
@@ -861,8 +899,12 @@ export default function EduGame() {
                   onClick={resetTimer}
                 >
                   Reset Timer
-                </button>
-              </div>
+                </button> */}
+                  <div>
+                    <MyStopwatch />
+                  </div>
+                </div>
+              }
             </div>
 
             <div className="col-md-3">
@@ -995,9 +1037,10 @@ export default function EduGame() {
               <div className="container-ai-statistics">
                 <p class="solution-time">
                   The AI took less than one second to get this solution and is{" "}
-                  {(-100+((currentTotalPreference / totalPreference) * 100)).toFixed(
-                    2
-                  )}
+                  {(
+                    -100 +
+                    (currentTotalPreference / totalPreference) * 100
+                  ).toFixed(2)}
                   % better in terms of preference satisfaction.
                 </p>
 

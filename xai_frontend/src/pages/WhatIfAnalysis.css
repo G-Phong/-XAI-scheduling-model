@@ -26,14 +26,14 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: auto; /* Centers the sliders */
+  margin: auto;
   margin-bottom: 30px;
 }
 
 .spider-plot {
   background-color: lightcyan;
   width: 60%;
-  margin: auto; /* Centers the spider plot */
+  margin: auto;
 }
 
 .spider-plot h5 {
@@ -45,14 +45,6 @@
   height: auto;
 }
 
-/* .generate-button {
-  margin-top: 1vh;
-  width: 20vh;
-  height: 30vh;
-  padding: 0;
-  text-align: left;
-} */
-
 .generate-button {
   margin-top: 1vh;
   color: white;
@@ -63,7 +55,6 @@
   white-space: nowrap;
 }
 
-/* CSS for Two-Column Layout */
 .schedule-container {
   display: flex;
   justify-content: space-between;
@@ -97,15 +88,13 @@
   margin: auto;
 }
 
-/* CSS for Availability Mask Table */
 .availability-mask {
-  margin: 0 auto; /* Center the table horizontally */
+  margin: 0 auto;
   display: block;
 }
 
 .availability-mask h2 {
   text-align: center;
-  /* If there are any additional styles that might be affecting it, address them here */
 }
 
 .availability-mask th,
@@ -117,7 +106,6 @@
   transition: background-color 0.3s ease;
 }
 
-/* Override Bootstrap styles for Availability Mask Table */
 .availability-mask th {
   background-color: #4a5d62;
   color: white;
@@ -127,39 +115,37 @@
   background-color: #78979e;
 }
 
-/* Centering content within the columns */
 .centered-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Increase specificity for your custom table styles */
 .container-what-if .availability-mask .table th,
 .container-what-if .availability-mask .table td {
   padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
-  background-color: #78979e; /* Your desired color */
+  background-color: #78979e;
 }
 
 .container-what-if .availability-mask .table th {
-  background-color: #4a5d62; /* Your desired color */
+  background-color: #4a5d62;
   color: white;
 }
 
 .container-what-if .availability-mask .table td {
-  background-color: #78979e; /* Your desired color */
+  background-color: #78979e;
 }
 
 .status-box {
-  border: 1px solid #ccc; /* Border style */
-  padding: 10px; /* Padding for content inside the box */
-  margin-top: 20px; /* Margin for spacing */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 .status-box p {
-  margin: 0; /* Remove default margin for paragraphs inside the box */
+  margin: 0;
 }
 
 .comparison-section {

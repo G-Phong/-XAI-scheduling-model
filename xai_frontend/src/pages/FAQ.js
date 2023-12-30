@@ -81,9 +81,11 @@ A "solution" in this context refers to the end result that successfully meets al
           question: "How can you use software to solve such a problem?",
           answer: (
             <p>
-              There are algorithms which are designed to solve Constraint Optimization Problems (see previous question).
-              Our algorithm solves the shift scheduling problem by using a computational model (a software), developed by Google. 
-              The software was developed by Google, as part of their{" "}
+              There are algorithms which are designed to solve Constraint
+              Optimization Problems (see previous question). Our algorithm
+              solves the shift scheduling problem by using a computational model
+              (a software), developed by Google. The software was developed by
+              Google, as part of their{" "}
               <a
                 href="https://developers.google.com/optimization/"
                 target="_blank"
@@ -91,11 +93,12 @@ A "solution" in this context refers to the end result that successfully meets al
               >
                 OR-Tools
               </a>
-              , a powerful suite designed for solving complex computational problems.
+              , a powerful suite designed for solving complex computational
+              problems.
             </p>
           ),
         },
-   
+
         /*         {
           question: "What is the difference between hard and soft constraints?",
           answer:
@@ -129,29 +132,29 @@ By balancing all these elements, the algorithm aims to assign shifts in a way th
         },
         {
           question: "Why don’t I always get my preferred shift?",
-          answer:
-          (
+          answer: (
             <div className="pre-wrap">
               {`The allocation of shifts is a complex problem that considers various constraints and your preferences. However, achieving an optimal solution often involves trade-offs. Operational requirements and the preferences of other employees can influence the final schedule, which may result in you not always getting your preferred shift.
 
-For instance, let's say you prefer to work the morning shift, but due to a high demand for morning shifts from other employees or operational needs, you may occasionally be assigned an afternoon or evening shift instead.` } </div>
-          ),},
+For instance, let's say you prefer to work the morning shift, but due to a high demand for morning shifts from other employees or operational needs, you may occasionally be assigned an afternoon or evening shift instead.`}{" "}
+            </div>
+          ),
+        },
         {
           question: "Can the algorithm always find a “good” solution?",
-          answer:
-            "The algorithm aims to find the best solution possible."
-          },
+          answer: "The algorithm aims to find the best solution possible.",
+        },
         {
           question:
             "How will the algorithm handle conflicts where multiple employees prefer the same shift?",
           answer:
-            "When multiple employees prefer the same shift, the algorithm strives to find a fair solution while maximizing overall employee preferences. For instance, if two employees both want the morning shift, the algorithm will consider their preferences and other factors, like operational needs. It may assign the morning shift to one employee on some days and to the other on different days, all while aiming to maximize everyone's satisfaction."
+            "When multiple employees prefer the same shift, the algorithm strives to find a fair solution while maximizing overall employee preferences. For instance, if two employees both want the morning shift, the algorithm will consider their preferences and other factors, like operational needs. It may assign the morning shift to one employee on some days and to the other on different days, all while aiming to maximize everyone's satisfaction.",
         },
         {
           question:
             "Can the algorithm consider my long-term wishes, for example, if I know I want more time off in a particular month?",
           answer:
-          "The algorithm considers long-term preferences, like desiring more time off in a specific month, through user profiles and customizable constraints. For instance, an employee can express a preference for reduced shifts in December. While this feature is not yet implemented, it is planned for future versions of the algorithm, allowing for a balance between short-term operational needs and long-term employee desires."  
+            "The algorithm considers long-term preferences, like desiring more time off in a specific month, through user profiles and customizable constraints. For instance, an employee can express a preference for reduced shifts in December. While this feature is not yet implemented, it is planned for future versions of the algorithm, allowing for a balance between short-term operational needs and long-term employee desires.",
         },
         {
           question:
@@ -164,7 +167,6 @@ For instance, let's say you prefer to work the morning shift, but due to a high 
           answer:
             "The algorithm is generally very quick, both in its general operation and in responding to changes like unexpected absences. These changes need to be input by the organization so that the AI algorithm can incorporate them into the scheduling process.",
         },
-  
       ],
     },
   ];

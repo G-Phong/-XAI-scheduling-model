@@ -1,11 +1,6 @@
-/* Navbar.css */
-/* Explanation: To increase specificity, we use .navbar before .dropdown-item */
-
 /* Navbar Style */
 .navbar {
   background-color: #e3f2fd;
-  /* overflow: visible; */
-  color: white;
   top: 0;
   left: 0;
   bottom: 0;
@@ -15,41 +10,41 @@
   padding: 0rem;
   overflow-y: auto;
   border-right: 0px solid #ccc;
-  justify-content: center; /* Horizontale Zentrierung */
-  align-items: center; /* Vertikale Zentrierung */
-  z-index: 1000; /* To ensure it stays on top of other content */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 /* Dropdown Item Style */
 .navbar .dropdown-item {
-  background-color: #353535; /* Dropdown item background color (light gray) */
-  color: #ffffff; /* Dropdown item text color */
+  background-color: #353535;
+  color: #ffffff;
   text-align: center;
   line-height: 2;
 }
 
 /* Dropdown Menu Style */
 .navbar .dropdown-menu {
-  background-color: #333; /* Dropdown menu background color */
-  color: white; /* Text color in the dropdown menu */
-  border: none; /* No border around the dropdown menu */
+  background-color: #333;
+  color: white;
+  border: none;
 }
 
 /* Hover Effect for Dropdown Items */
 .navbar .dropdown-item:hover {
-  background-color: #555; /* Background color on hover */
-  color: white; /* Text color on hover */
+  background-color: #555;
+  color: white;
 }
 
 /* Active Dropdown Item */
 .navbar .dropdown-item.active {
-  background-color: #777; /* Background color of the active item */
+  background-color: #777;
 }
 
 /* Background Color when Dropdown is Triggered */
 .navbar .dropdown-toggle:focus {
-  background-color: transparent; /* Transparent background */
-  border-color: transparent; /* Transparent border */
+  background-color: transparent;
+  border-color: transparent;
 }
 
 /* Brand Text Style */
@@ -65,13 +60,8 @@
 }
 
 .navbar .navbar-brand:hover {
-  color: rgba(
-    255,
-    255,
-    255,
-    0.7
-  ); /* Change to your desired hover color, this is white for example */
-  cursor: pointer; /* Changes the mouse cursor to a hand, indicating a clickable element */
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
 }
 
 /* Style for the List of Links */
@@ -80,8 +70,8 @@
   list-style: none;
   padding: 0;
   margin-top: 2rem;
-  flex-grow: 1; /* Fills the available vertical space */
-  overflow-y: auto; /* Add scrollbar when overflow occurs */
+  flex-grow: 1;
+  overflow-y: auto;
   display: flex;
   align-items: center;
   z-index: 1000;
@@ -106,11 +96,6 @@
   background-color: #555;
 }
 
-/* Hover Effect for List Items */
-/* .nav-item:hover {
-  background-color: #777;
-} */
-
 .navbar-container {
   position: fixed;
   margin-left: 30px;
@@ -121,10 +106,7 @@
   position: absolute;
   top: 85vh;
   left: 50%;
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Um sowohl horizontal als auch vertikal zu zentrieren */
+  transform: translate(-50%, -50%);
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -135,12 +117,11 @@
 .uni-logo {
   width: auto;
   height: 65px;
-
-  transition: transform 0.3s ease; /* Transition effect for smooth scaling */
+  transition: transform 0.3s ease;
 }
 
 .uni-logo:hover {
-  transform: scale(1.1); /* Scales the image up slightly on hover */
+  transform: scale(1.1);
 }
 
 /* Follow socials styles*/
@@ -148,10 +129,7 @@
   position: absolute;
   top: 80vh;
   left: 50%;
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Um sowohl horizontal als auch vertikal zu zentrieren */
+  transform: translate(-50%, -50%);
   align-items: center;
   color: white;
   font-size: 16px;
@@ -166,7 +144,7 @@
 }
 
 .social-icon {
-  width: 50px; /* adjust based on your preference */
+  width: 50px;
   height: auto;
   margin: 0 5px;
   transition: transform 0.3s ease;

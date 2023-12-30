@@ -1,5 +1,4 @@
 import "./LandingPage.css";
-import ai_brain from "../Img/ai_brain.jpg";
 import calendar_black from "../Img/calendar_black.png";
 import xai from "../Img/XAI.jpg";
 import phong from "../Img/phong.jpg";
@@ -11,7 +10,6 @@ import holding_calendar from "../Img/holding_calendar.jpg";
 import pencil_book from "../Img/pencil_book.jpg";
 import smartphone_hand from "../Img/smartphone_hand.jpg";
 import thumbs_up_down from "../Img/thumbs_up_down.jpg";
-import fml_logo from "../Img/FML_logo.jpg";
 
 import React, { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";

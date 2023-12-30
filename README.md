@@ -1,28 +1,28 @@
-# Explainable AI: An Explanatory Model for a Scheduling COP
+# Explainable AI: An Explanatory Model for a Shift Scheduling Algorithm
 
 ## Overview
 
-This repository is dedicated to the development of an Explanatory Model for a CP-based shift scheduling algorithm with optimization. The project aims to deliver human-centered explanations by leveraging cognitive psychology principles.
+This repository is dedicated to a Master's thesis project from [TUM-fml](https://www.mec.ed.tum.de/en/fml/cover-page/), which focuses on developing a web application that provides explanations for a preference-based shift scheduling system powered by Constraint Programming.
+
+For more information, please refer to the [HPAO project](https://www.mec.ed.tum.de/en/fml/forschung/2022/hpao-a-human-prefrerence-aware-optimization-system/).
+
 
 ## Architecture
 
 The software architecture consists of four key components:
 
-- **Frontend**: Developed using ReactJS for a responsive and dynamic UI.
-- **Backend**: Built with Python Flask for managing API calls and data manipulation.
-- **In-Memory Data Storage**: For efficient data handling and quick retrieval. No Database used here.
-- **COP Model**: Constraint Optimization Programming model for generating optimized shift plans. This is based on a master thesis of Sebastian Storcher.
+- **Frontend**: Developed using React for a dynamic UI.
+- **Backend**: Built with Python Flask for managing API calls and COP model data manipulation.
+- **COP Model**: Constraint Optimization Programming model for generating optimized shift plans. This is taken from the [HPAO project](https://www.mec.ed.tum.de/en/fml/forschung/2022/hpao-a-human-prefrerence-aware-optimization-system/)
 
 ## Features
 
 The Explanatory Model includes the following key features:
 
-- Frequently Asked Questions
-- Scenario-Infographic
-- Flipped Classroom: Quiz
-- Analysis Dashboard
-- Educational Drag-and-Drop Optimization Game
-- etc.
+- Get-Started Infographic
+- What-If Scenarios
+- Educational Game: Shift Puzzle Game
+- Theory Classroom: FAQ and Quiz
 
 ## Project Structure
 
@@ -30,32 +30,20 @@ This repository is organized as follows:
 
 - **backend**: This directory contains all the server-side logic.
 
-- **cop_model**: This directory contains everything related to the Constraint Optimization Problem (COP) model.
-
 - **frontend**: All client-side code is located here.
 
-- **node_modules**: This directory contains Node.js modules required for the frontend.
+The backend and the frontend each contain their own README file.
 
 ## How to Run Locally
 
-### Requirements
-- Node.js and npm
-- Python 3.x
-- Flask
-
-
-### Steps
-
 1. Clone this repository.
-2. Navigate to the project directory.
-3. Run `npm install` in the `xai_frontend` folder to install React dependencies.
-4. Run `pip install -r requirements.txt` in the project folder to install Flask and other Python dependencies.
-5. Use `npm start` in the `xai_frontend` folder to start the React development server.
-6. Use `flask run` or `python backend.py` to start the Flask server.
-7. Follow the instructions in Terminal and see the model in your internet browser.
+2. Run `pip install -r requirements.txt` in the `backend` folder to install Flask and other Python dependencies.
+3. Run `python backend.py` in a terminal to run the Flask backend locally (per default, it will run on `localhost:5000`).
+4. Open a second terminal. There you will run the React Frontend locally.
+5. In the new terminal, run `npm install` in the `xai_frontend` folder to install React dependencies.
+6. Run `npm start` to start the React development server.
+7. Your browser will open automatically and show the web application.
 
-## Contributing
+## Contact
 
-Please create a new branch for each new feature or bugfix. Refer to GitLab's branching strategy and workflow for more details.
-
-Contact: giaphong.tran@tum.de
+E-Mail: giaphong.tran@tum.de or charlotte.haid@tum.de

@@ -1,26 +1,30 @@
-# Python Virtual Environment
-xai_venv/
+# Ignore GitHub Actions workflows
+.github/workflows
 
-# Node.js Modules
+# Ignore Visual Studio Code settings
+.vscode
+
+# Ignore image and infographic files
+Images_Infographics/
+
+# Ignore Python cache files
+__pycache__
+backend/__pycache__
+
+# Ignore Node.js dependencies
 node_modules/
+xai_frontend/node_modules
 
-# Compiled JavaScript
-build/
-dist/
+# Ignore GitLab CI/CD configuration
+.gitlab-ci.yml
 
-# Log-Dateien
-*.log
+# Ignore test HTML file
+react_test.html
 
-# Umgebungskonfigurationsdateien (z.B., .env)
-.env
+# Ignore Python virtual environment
+venv/
 
-# Visual Studio Code-Dateien
-.vscode/
+# Ignore test results
+test_results/
 
-# Lokale Konfigurationsdateien
-*.local
-
-.deployment
-deploy.sh
-
-.VSCodeCounter
+# Ignore any other files or folders you want to exclude
