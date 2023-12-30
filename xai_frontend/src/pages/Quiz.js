@@ -1,8 +1,6 @@
 import React from "react";
 import Quiz from "react-quiz-component";
 
-import "./Quiz.css";
-
 export const quiz = {
   quizTitle: "AI-based Shift Scheduling",
   quizSynopsis: "You get 10 marks for each correct answer.",

@@ -1,9 +1,6 @@
-/* EduGame.css */
-
 .eduGame {
   background-color: lightsteelblue;
   text-align: center;
-  /* padding: 5vh; */
 }
 
 .table-responsive {
@@ -17,17 +14,17 @@
 }
 
 .employee-kiosk {
-  background-color: #3498db; /* You can change this color to your preference */
+  background-color: #3498db;
   border: 2px solid #ccc;
   padding: 8px;
   margin: 4px;
-  color: #fff; /* Text color */
+  color: #fff;
   cursor: grab;
   transition: transform 0.2s;
 }
 
 .employee-kiosk:active {
-  background-color: #2980b9; /* Color when clicked */
+  background-color: #2980b9;
   transform: scale(1.1);
 }
 
@@ -48,8 +45,8 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 20px;
-  justify-content: center; /* Center-align items horizontally */
-  align-items: center; /* Center-align items vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 .alert {
@@ -60,15 +57,15 @@
 
 .row-gaugeCharts {
   display: flex;
-  justify-content: center; /* Horizontally center the content in the row */
-  align-items: center; /* Vertically center the content in the row */
+  justify-content: center;
+  align-items: center;
 }
 
 .gauge-charts {
   display: flex;
-  flex-direction: row; /* Ensure charts are in a row */
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .row-availability {
@@ -79,9 +76,8 @@
   text-align: center;
 }
 
-/* Fügen Sie diese CSS-Regel hinzu, um eine gestrichelte Border hinzuzufügen */
 .dotted-border {
-  border: 1px dashed #000; /* Sie können die Farbe anpassen */
+  border: 1px dashed #000;
 }
 
 .progress {
@@ -105,7 +101,7 @@
 }
 
 .timer {
-  font-size: 2rem; /* Hier kannst du die Schriftgröße nach Bedarf anpassen */
+  font-size: 2rem;
   color: darkblue;
   padding: 0;
   margin: 0;
@@ -169,7 +165,7 @@
   height: auto;
 }
 
-.reset-button{
+.reset-button {
   font-size: 12px;
   margin-top: 0.5vh;
   margin-left: 1vh;

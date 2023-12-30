@@ -5,7 +5,6 @@ import Schedule from "./pages/Schedule.js";
 import WhatIfAnalysis from "./pages/WhatIfAnalysis.js";
 import EduGame from "./pages/EduGame.js";
 import TheoryClassroom from "./pages/TheoryClassroom.js";
-import Visualization from "./pages/Visualization.js";
 import LandingPage from "./pages/LandingPage.js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,7 +23,6 @@ export default function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/home" element={<LandingPage />} />
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/visual" element={<Visualization />} />
             <Route path="/what-if" element={<WhatIfAnalysis />} />
             <Route path="/edugame" element={<EduGame />} />
             <Route path="/theory" element={<TheoryClassroom />} />
