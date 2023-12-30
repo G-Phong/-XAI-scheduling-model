@@ -1,5 +1,5 @@
 {
-    "number_of_solutions": 2,
+    "number_of_solutions": 4,
     "solutions": [
         {
             "id": "solution1",
@@ -21,7 +21,7 @@
                     ],
                     "LateShift": [
                         {
-                            "employee": 2,
+                            "employee": 1,
                             "job": 0
                         },
                         {
@@ -67,37 +67,21 @@
                 "Wednesday": {
                     "EarlyShift": [
                         {
-                            "employee": 1,
+                            "employee": 2,
                             "job": 0
                         },
                         {
-                            "employee": 4,
+                            "employee": 1,
                             "job": 1
                         },
                         {
-                            "employee": 0,
+                            "employee": 4,
                             "job": 2
                         }
                     ],
                     "LateShift": [
                         {
-                            "employee": 4,
-                            "job": 0
-                        },
-                        {
                             "employee": 1,
-                            "job": 1
-                        },
-                        {
-                            "employee": 0,
-                            "job": 2
-                        }
-                    ]
-                },
-                "Thursday": {
-                    "EarlyShift": [
-                        {
-                            "employee": 4,
                             "job": 0
                         },
                         {
@@ -108,10 +92,26 @@
                             "employee": 2,
                             "job": 2
                         }
+                    ]
+                },
+                "Thursday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 3,
+                            "job": 0
+                        },
+                        {
+                            "employee": 0,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
                     ],
                     "LateShift": [
                         {
-                            "employee": 3,
+                            "employee": 0,
                             "job": 0
                         },
                         {
@@ -145,7 +145,7 @@
                             "job": 0
                         },
                         {
-                            "employee": 0,
+                            "employee": 4,
                             "job": 1
                         },
                         {
@@ -155,24 +155,194 @@
                     ]
                 }
             },
-            "total_preference": "1865",
+            "total_preference": "1755",
             "sum_shifts_per_employee": {
-                "0": "7",
-                "1": "6",
+                "0": "6",
+                "1": "7",
                 "2": "5",
                 "3": "3",
                 "4": "9"
             },
             "individual_preference_score": {
-                "0": "430",
+                "0": "300",
                 "1": "400",
                 "2": "360",
                 "3": "195",
-                "4": "480"
+                "4": "500"
             }
         },
         {
             "id": "solution2",
+            "schedule": {
+                "Monday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 0,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 2,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 2,
+                            "job": 0
+                        },
+                        {
+                            "employee": 1,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Tuesday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 2,
+                            "job": 0
+                        },
+                        {
+                            "employee": 1,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 2,
+                            "job": 0
+                        },
+                        {
+                            "employee": 0,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Wednesday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 0,
+                            "job": 0
+                        },
+                        {
+                            "employee": 1,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 1,
+                            "job": 0
+                        },
+                        {
+                            "employee": 0,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Thursday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 3,
+                            "job": 0
+                        },
+                        {
+                            "employee": 0,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 0,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 1,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Friday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 3,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 1,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 3,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 2,
+                            "job": 2
+                        }
+                    ]
+                }
+            },
+            "total_preference": "1815",
+            "sum_shifts_per_employee": {
+                "0": "6",
+                "1": "6",
+                "2": "5",
+                "3": "3",
+                "4": "10"
+            },
+            "individual_preference_score": {
+                "0": "300",
+                "1": "400",
+                "2": "360",
+                "3": "195",
+                "4": "560"
+            }
+        },
+        {
+            "id": "solution3",
             "schedule": {
                 "Monday": {
                     "EarlyShift": [
@@ -191,7 +361,7 @@
                     ],
                     "LateShift": [
                         {
-                            "employee": 4,
+                            "employee": 2,
                             "job": 0
                         },
                         {
@@ -199,7 +369,7 @@
                             "job": 1
                         },
                         {
-                            "employee": 1,
+                            "employee": 4,
                             "job": 2
                         }
                     ]
@@ -207,35 +377,49 @@
                 "Tuesday": {
                     "EarlyShift": [
                         {
-                            "employee": 2,
+                            "employee": 0,
                             "job": 0
                         },
                         {
-                            "employee": 0,
+                            "employee": 4,
                             "job": 1
                         },
                         {
-                            "employee": 4,
+                            "employee": 1,
                             "job": 2
                         }
                     ],
                     "LateShift": [
                         {
-                            "employee": 0,
+                            "employee": 2,
                             "job": 0
                         },
                         {
-                            "employee": 4,
+                            "employee": 0,
                             "job": 1
                         },
                         {
-                            "employee": 2,
+                            "employee": 4,
                             "job": 2
                         }
                     ]
                 },
                 "Wednesday": {
                     "EarlyShift": [
+                        {
+                            "employee": 0,
+                            "job": 0
+                        },
+                        {
+                            "employee": 1,
+                            "job": 1
+                        },
+                        {
+                            "employee": 2,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
                         {
                             "employee": 4,
                             "job": 0
@@ -246,20 +430,6 @@
                         },
                         {
                             "employee": 0,
-                            "job": 2
-                        }
-                    ],
-                    "LateShift": [
-                        {
-                            "employee": 2,
-                            "job": 0
-                        },
-                        {
-                            "employee": 0,
-                            "job": 1
-                        },
-                        {
-                            "employee": 4,
                             "job": 2
                         }
                     ]
@@ -271,25 +441,25 @@
                             "job": 0
                         },
                         {
-                            "employee": 4,
+                            "employee": 0,
                             "job": 1
                         },
                         {
-                            "employee": 0,
+                            "employee": 4,
                             "job": 2
                         }
                     ],
                     "LateShift": [
                         {
-                            "employee": 4,
+                            "employee": 0,
                             "job": 0
                         },
                         {
-                            "employee": 1,
+                            "employee": 4,
                             "job": 1
                         },
                         {
-                            "employee": 2,
+                            "employee": 1,
                             "job": 2
                         }
                     ]
@@ -319,26 +489,196 @@
                             "job": 1
                         },
                         {
-                            "employee": 0,
+                            "employee": 2,
                             "job": 2
                         }
                     ]
                 }
             },
-            "total_preference": "1915",
+            "total_preference": "1845",
             "sum_shifts_per_employee": {
                 "0": "7",
-                "1": "5",
+                "1": "6",
+                "2": "5",
+                "3": "3",
+                "4": "9"
+            },
+            "individual_preference_score": {
+                "0": "350",
+                "1": "450",
+                "2": "360",
+                "3": "195",
+                "4": "490"
+            }
+        },
+        {
+            "id": "solution4",
+            "schedule": {
+                "Monday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 2,
+                            "job": 0
+                        },
+                        {
+                            "employee": 0,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 2,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 1,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Tuesday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 4,
+                            "job": 0
+                        },
+                        {
+                            "employee": 1,
+                            "job": 1
+                        },
+                        {
+                            "employee": 2,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 2,
+                            "job": 0
+                        },
+                        {
+                            "employee": 0,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Wednesday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 0,
+                            "job": 0
+                        },
+                        {
+                            "employee": 1,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 0,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 1,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Thursday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 3,
+                            "job": 0
+                        },
+                        {
+                            "employee": 0,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 0,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 1,
+                            "job": 2
+                        }
+                    ]
+                },
+                "Friday": {
+                    "EarlyShift": [
+                        {
+                            "employee": 3,
+                            "job": 0
+                        },
+                        {
+                            "employee": 1,
+                            "job": 1
+                        },
+                        {
+                            "employee": 4,
+                            "job": 2
+                        }
+                    ],
+                    "LateShift": [
+                        {
+                            "employee": 3,
+                            "job": 0
+                        },
+                        {
+                            "employee": 4,
+                            "job": 1
+                        },
+                        {
+                            "employee": 2,
+                            "job": 2
+                        }
+                    ]
+                }
+            },
+            "total_preference": "1855",
+            "sum_shifts_per_employee": {
+                "0": "6",
+                "1": "6",
                 "2": "5",
                 "3": "3",
                 "4": "10"
             },
             "individual_preference_score": {
-                "0": "430",
-                "1": "400",
+                "0": "300",
+                "1": "450",
                 "2": "360",
                 "3": "195",
-                "4": "530"
+                "4": "550"
             }
         }
     ]
