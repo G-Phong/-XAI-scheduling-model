@@ -9,9 +9,11 @@ Images_Infographics/
 
 # Ignore Python cache files
 __pycache__
+backend/__pycache__
 
 # Ignore Node.js dependencies
 node_modules/
+xai_frontend/node_modules
 
 # Ignore GitLab CI/CD configuration
 .gitlab-ci.yml
