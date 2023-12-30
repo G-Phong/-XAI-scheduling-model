@@ -1,4 +1,3 @@
-/* Define styles for the custom table */
 .custom-table {
   background-color: lightsteelblue;
   border-collapse: collapse;
@@ -8,34 +7,29 @@
 }
 
 .custom-table th, .custom-table td {
-  border: 1px solid black; /* Add borders to table cells */
-  padding: 8px; /* Add padding for better spacing */
+  border: 1px solid black;
+  padding: 8px;
 }
 
-
 .custom-table th{
-  background-color: darkblue; /* Dark background color */
+  background-color: darkblue;
   border-collapse: collapse;
   width: 100%;
-  color: white; /* Text color */
+  color: white;
   text-align: center;
   border: 1px solid black;
 }
 
-
-/* Highlighted cells for "YOU" */
 .custom-table .highlighted-cell {
   background-color: lightgreen;
 }
 
-
-/* Animation for table row highlighting */
 .custom-table .highlighted-cell {
-  animation: highlight 1s infinite alternate; /* Animation for highlighting */
+  animation: highlight 1s infinite alternate;
 }
 
 .shift-type-td{
-  font-weight:bold ;
+  font-weight:bold;
 }
 
 .subcell.jobType{
@@ -48,7 +42,6 @@
   color: black;
 }
 
-/* Toggle button styles */
 .modern-toggle-button {
   position: relative;
   width: 60px;
@@ -97,7 +90,6 @@ input:checked + .toggle-button-slider:before {
   transform: translateX(26px);
 }
 
-/* Yellow and white button styles */
 .btn-custom-yellow {
   background-color: yellow;
   color: black;
@@ -118,7 +110,6 @@ input:checked + .toggle-button-slider:before {
   color: black;
 }
 
-/* Button width and margin styles */
 .btn-sm.custom-width {
   width: 30px;
   text-align: center;

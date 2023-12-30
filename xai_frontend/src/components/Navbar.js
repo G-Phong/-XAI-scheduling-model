@@ -8,7 +8,6 @@ import linkedin_logo from "../Img/linkedin_logo.jpg";
 import "./Navbar.css";
 
 function Navbar() {
-  // Funktion, um das Dropdown zu öffnen/schließen
   const toggleDropdown = (event) => {
     const dropdownMenu = event.currentTarget.nextElementSibling;
     dropdownMenu.classList.toggle("show");
@@ -39,9 +38,6 @@ function Navbar() {
               <Link to="/what-if" className="dropdown-item">
                 What-If Scenarios
               </Link>
-       {/*        <Link to="/visual" className="dropdown-item">
-                Visualization
-              </Link> */}
             </div>
           </li>
           <li className="nav-item dropdown">
@@ -90,7 +86,7 @@ function Navbar() {
           />
         </a>
       </div>
-      {/* Now add the logos (outside the navbar element) */}
+
       <div className="uni-logo-wrapper">
         <a
           href="https://www.mec.ed.tum.de/en/fml/cover-page/"
